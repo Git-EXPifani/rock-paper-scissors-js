@@ -128,37 +128,3 @@ function playRound(humChoice) {
     }
     
 }
-
-// function playGame(){
-
-//     console.log(playRound(userChoice,comChoice));
-//     //One Round
-//      userChoice=getHumanChoice();
-//      comChoice=getComputerChoice();
-
-//     console.log(playRound(userChoice,comChoice));
-//     //One Round
-//      userChoice=getHumanChoice();
-//      comChoice=getComputerChoice();
-
-//     console.log(playRound(userChoice,comChoice));
-//     //One Round
-//      userChoice=getHumanChoice();
-//      comChoice=getComputerChoice();
-
-//     console.log(playRound(userChoice,comChoice));
-//     //One Round
-//      userChoice=getHumanChoice();
-//      comChoice=getComputerChoice();
-
-//     console.log(playRound(userChoice,comChoice));
-//     //One Round
-//     console.log("5 Rounds over!")
-// }
-
-
-
-
-
-
-
