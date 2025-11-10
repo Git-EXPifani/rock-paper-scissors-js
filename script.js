@@ -5,6 +5,17 @@ let humanScore = 0;
 let computerScore = 0;
 
 
+//Button Declarations
+const btnRock = document.querySelector("#rock");
+const btnScissor = document.querySelector("#scissors");
+const btnPaper = document.querySelector("#paper");
+//Event Listeners (The Buttons)
+btnRock.addEventListener("click", ()=>playRound("Rock  "));
+btnScissor.addEventListener("click", ()=>playRound("Scissors  "));
+btnPaper.addEventListener("click", ()=>playRound("Paper  "));
+
+
+
 function getComputerChoice(){
     let choice =Math.floor((Math.random()*3)+1);
 
@@ -23,84 +34,127 @@ function getHumanChoice(){
     return userInput;
 }
 
-function playRound(humChoice,comChoice) {
+function playRound(humChoice) {
 
-let firstLetter;
-let theRest;
-
-firstLetter=humChoice[0].toUpperCase();
-
-theRest = humChoice.replace(humChoice[0],"");
-let theRest2 = theRest.toLowerCase(); 
    
             
 
+    let comChoice=getComputerChoice();
             
 
-    humChoice = firstLetter + theRest2;
-    console.log(humChoice);
-    console.log(comChoice);
+
+    const resultPanel = document.querySelector("#results");
+    const spanOne = document.createElement("span");
+    const spanTwo = document.createElement("span");
+    const divSep = document.createElement("div");
+    const divScore = document.createElement("div");
+
+    spanOne.textContent = humChoice;
+    spanTwo.textContent = comChoice;
+
+    resultPanel.appendChild(spanOne);
+    resultPanel.appendChild(spanTwo);
+
+    humChoice = humChoice.trim();
+    comChoice = comChoice.trim();
+
 
     if(humChoice==comChoice){//Same choice
-        return "No points for either!."
+        divSep.textContent = "No points for either!.";
+        resultPanel.appendChild(divSep);
     } else if(humChoice=="Paper"){//Player chooses Paper
         if(comChoice=="Rock"){
         humanScore++;
-        return "You Win! Paper beats Rock.";}
+        divSep.textContent = "You Win! Paper beats Rock.";
+        resultPanel.appendChild(divSep);
+    divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+    resultPanel.appendChild(divScore);
+}
             else if(comChoice=="Scissors"){
                         computerScore++;
-                        return "You Lose! Paper loses to Scissors.";}}
+                        divSep.textContent = "You Lose! Paper loses to Scissors.";
+                    resultPanel.appendChild(divSep);
+                
+    divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+    resultPanel.appendChild(divScore);
+            }}
+
 
     //Player chooses Rock 
     if(humChoice=="Rock"){
         if(comChoice=="Scissors"){
         humanScore++;
-        return "You Win! Rock beats Scissors.";
+        divSep.textContent = "You Win! Rock beats Scissors.";
+        resultPanel.appendChild(divSep);
+        divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+        resultPanel.appendChild(divScore);
     }else if(comChoice=="Paper"){
         computerScore++;
-        return "You Lose! Rock loses to Paper.";
+        divSep.textContent =  "You Lose! Rock loses to Paper.";
+        resultPanel.appendChild(divSep);
+        divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+        resultPanel.appendChild(divScore);
     }}
 
     //Player chooses Scissors
      if(humChoice=="Scissors"){
         if(comChoice=="Paper"){
         humanScore++;
-        return "You Win! Scissors beat Paper.";
+        divSep.textContent = "You Win! Scissors beat Paper.";
+        resultPanel.appendChild(divSep);
+        divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+        resultPanel.appendChild(divScore);
     }else if(comChoice=="Rock"){
         computerScore++;
-        return "You Lose! Scissors loses to Rock.";
+        divSep.textContent = "You Lose! Scissors loses to Rock.";
+        resultPanel.appendChild(divSep);
+        divScore.textContent = `Human Score = ${humanScore} Computer Score = ${computerScore}`
+        resultPanel.appendChild(divScore);
     }}       
+
+    if(humanScore == 5 || computerScore == 5){
+        if(humanScore == 5){
+            divScore.textContent = "Human Player has reached 5 points! The Winner!!!";
+            resultPanel.appendChild(divScore); 
+            humanScore = 0;
+            computerScore = 0;
+        } else if (computerScore == 5){
+
+            divScore.textContent = "Computer Player has reached 5 points! The Winner!!!";
+            resultPanel.appendChild(divScore); 
+            humanScore = 0;
+            computerScore = 0;
+        }
+    }
     
 }
 
-function playGame(){
-    let userChoice=getHumanChoice();
-    let comChoice=getComputerChoice();
+// function playGame(){
 
-    console.log(playRound(userChoice,comChoice));
-    //One Round
-     userChoice=getHumanChoice();
-     comChoice=getComputerChoice();
+//     console.log(playRound(userChoice,comChoice));
+//     //One Round
+//      userChoice=getHumanChoice();
+//      comChoice=getComputerChoice();
 
-    console.log(playRound(userChoice,comChoice));
-    //One Round
-     userChoice=getHumanChoice();
-     comChoice=getComputerChoice();
+//     console.log(playRound(userChoice,comChoice));
+//     //One Round
+//      userChoice=getHumanChoice();
+//      comChoice=getComputerChoice();
 
-    console.log(playRound(userChoice,comChoice));
-    //One Round
-     userChoice=getHumanChoice();
-     comChoice=getComputerChoice();
+//     console.log(playRound(userChoice,comChoice));
+//     //One Round
+//      userChoice=getHumanChoice();
+//      comChoice=getComputerChoice();
 
-    console.log(playRound(userChoice,comChoice));
-    //One Round
-     userChoice=getHumanChoice();
-     comChoice=getComputerChoice();
+//     console.log(playRound(userChoice,comChoice));
+//     //One Round
+//      userChoice=getHumanChoice();
+//      comChoice=getComputerChoice();
 
-    console.log(playRound(userChoice,comChoice));
-    //One Round
-    console.log("5 Rounds over!")
-}
+//     console.log(playRound(userChoice,comChoice));
+//     //One Round
+//     console.log("5 Rounds over!")
+// }
 
 
 
